@@ -51,9 +51,6 @@ spec:
                   name: ansible-secrets
                   key: CONTROLLER_VERIFY_SSL
             - name: PLAYBOOK_NAME
-              valueFrom:
-                secretKeyRef:
-                  name: ansible-secrets
-                  key: PLAYBOOK_NAME
+              value: "my-playbook.yaml"
       restartPolicy: Never
   backoffLimit: 0
