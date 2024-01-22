@@ -8,6 +8,7 @@ spec:
       containers:
         - name: ansible
           image: ghcr.io/zcubbs/awx-ansible-runner:latest
+          imagePullPolicy: Always
           env:
             - name: GIT_REPO_URL
               valueFrom:
