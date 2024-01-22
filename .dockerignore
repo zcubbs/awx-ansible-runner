@@ -1,0 +1,6 @@
+*.http
+taskfile.yaml
+.gosec.config.json
+.editorconfig
+.gitignore
+build

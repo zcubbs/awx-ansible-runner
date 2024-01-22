@@ -1,0 +1,58 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: ansible-job
+spec:
+  template:
+    spec:
+      containers:
+        - name: ansible
+          image: ghcr.io/zcubbs/awx-ansible-runner:latest
+          env:
+            - name: GIT_REPO_URL
+              valueFrom:
+                secretKeyRef:
+                  name: ansible-secrets
+                  key: GIT_REPO_URL
+            - name: GIT_REPO_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: ansible-secrets
+                  key: GIT_REPO_USERNAME
+            - name: GIT_REPO_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: ansible-secrets
+                  key: GIT_REPO_PASSWORD
+            - name: ANSIBLE_VAULT_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: ansible-secrets
+                  key: ANSIBLE_VAULT_KEY
+            - name: CONTROLLER_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: ansible-secrets
+                  key: CONTROLLER_HOST
+            - name: CONTROLLER_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: ansible-secrets
+                  key: CONTROLLER_USERNAME
+            - name: CONTROLLER_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: ansible-secrets
+                  key: CONTROLLER_PASSWORD
+            - name: CONTROLLER_VERIFY_SSL
+              valueFrom:
+                secretKeyRef:
+                  name: ansible-secrets
+                  key: CONTROLLER_VERIFY_SSL
+            - name: PLAYBOOK_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: ansible-secrets
+                  key: PLAYBOOK_NAME
+      restartPolicy: Never
+  backoffLimit: 4
