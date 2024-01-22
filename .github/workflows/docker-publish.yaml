@@ -1,11 +1,17 @@
 name: Docker Build and Publish
 
 on:
+  workflow_dispatch:
   push:
     branches: [ "main" ]  # Trigger on push to the main branch; change as needed
   pull_request:
     branches: [ "main" ]
-
+permissions:
+  contents: write
+  packages: write
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}-release
+  cancel-in-progress: true
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
