@@ -3,8 +3,8 @@
 # Configure Git credentials
 git config --global credential.helper 'cache --timeout=3600'
 echo "url=$GIT_REPO_URL
-username=$GIT_USERNAME
-password=$GIT_PASSWORD" | git credential approve
+username=$GIT_REPO_USERNAME
+password=$GIT_REPO_PASSWORD" | git credential approve
 
 # Check out the Git repository into a directory named "tmp-repo"
 git clone $GIT_REPO_URL /tmp-repo

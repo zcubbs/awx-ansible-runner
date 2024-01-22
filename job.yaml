@@ -56,4 +56,4 @@ spec:
                   name: ansible-secrets
                   key: PLAYBOOK_NAME
       restartPolicy: Never
-  backoffLimit: 4
+  backoffLimit: 0
