@@ -1,6 +1,6 @@
 # AWX Bootsrap Runner
 
-Update AWX configuration (templates, invertories, etc...) from git using a Kubernetes Job.
+Update AWX configuration (templates, inventories, etc...) from git using a Kubernetes Job.
 
 ## Usage
 
